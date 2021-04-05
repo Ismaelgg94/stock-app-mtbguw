@@ -1,0 +1,92 @@
+<mat-form-field>
+  <textarea matInput
+  [(ngModel)]="textInput"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"></textarea>
+</mat-form-field>
+<button mat-button (click)="onReset()">Reset</button>
+<button mat-button (click)="onClear()">Clear</button>
+<button mat-button (click)="onGetOverview()">Get overview</button>
+<button mat-button (click)="onGetDailyInfo()">Get daily info</button>
+<button mat-button (click)="onSendFiscalPeriodEnd()">Send Period End</button>
+<button mat-button
+[disabled]="!stock?.quarterIncome"
+(click)="onSendEarningsDate()">Send Earnings Date</button>
+<button mat-button (click)="onSendNumberInfo('revenue')">Send Revenues</button>
+<button mat-button (click)="onSendNumberInfo('grossProfit')">Send Gross Profit</button>
+<button mat-button (click)="onSendNumberInfo('operatingIncome')">Send Operating Income</button>
+<button mat-button (click)="onSendNumberInfo('netIncome')">Send Net Income</button>
+<button mat-button (click)="onSendNumberInfo('shares')">Send Shares</button>
+
+
+<button (click)="getDailyInfoTest()">Test</button>
+
+
+<table>
+  <thead>
+    <tr>
+      <th class="unselectable"> Earnings Date</th>
+      <th *ngFor="let ep of earningsPrice">{{ep.earningDate}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="unselectable"> Period End </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.fiscalDateEnd}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Revenues </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.revenue}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Gross Profit </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.grossProfit}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Operating Income </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.operatingIncome}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Net Income </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.netIncome}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Shares </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.shares}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Price Bef </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.intervalInfo?.close}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> GP/Shares </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.grossProfitCalc?.value}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Ratio (Pr/GPpS) </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.grossProfitCalc?.ratio}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Growth GP/Shares(%) </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.grossProfitCalc?.growth}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Mean Ratio </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.grossProfitCalc?.averageRatio}}</td>
+    </tr>
+    <tr>
+      <td class="unselectable"> Mean Growth </td>
+      <td *ngFor="let ep of earningsPrice">{{ep.grossProfitCalc?.averageGrowth}}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>{{infoAction}}</p>
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

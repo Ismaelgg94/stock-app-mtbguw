@@ -1,0 +1,35 @@
+/* Structure */
+table {
+  margin-top: 20px;
+  width: 100%;
+}
+
+button{
+  background-color: rgb(218, 218, 218);
+  margin: 4px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td{
+  text-align: center;
+  white-space: nowrap;
+  padding: 2px;
+}
+
+th{
+  white-space: nowrap;
+  padding: 4px;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
